@@ -1,0 +1,7 @@
+--- 3, 2, 1, fight! ---
+select name, SUM(f.won) as won, SUM(f.lost) as lost
+from fighters f, winning_moves w
+where f.move_id = w.id and w.move not in ('Hadoken', 'Shouoken', 'Kikoken') 
+group by name
+order by won desc
+limit 6
