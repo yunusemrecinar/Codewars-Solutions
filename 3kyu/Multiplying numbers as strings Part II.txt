@@ -1,0 +1,163 @@
+function multiply(n, o){
+  console.log("++");
+  console.log(n + " " + o);
+  
+  var count = 0;
+  
+  if(n.includes(".") && o.includes(".")) {
+    var num1 = "";
+    var num2 = "";
+    const myArray1 = n.split(".");
+    const myArray2 = o.split(".");
+    var count1 = myArray1[1].length;
+    var count2 = myArray2[1].length;
+    var sum = count1+count2;
+    
+    for(let i = 0; i < n.length; i++) {
+      if(n[i] == ".") continue;
+      else num1 += n[i];
+    }
+    for(let i = 0; i < o.length; i++) {
+      if(o[i] == ".") continue;
+      else num2 += o[i];
+    }
+    console.log(num1 + " " + num2);
+    var tempR = (BigInt(num1)*BigInt(num2)).toString();
+    
+    if(parseInt(tempR) == 0) return "0";
+    if(tempR.substring(0,tempR.length-sum).length == 0) {
+      var result = "0.";
+      for(let i = 0; i < ((count1+count2)- (tempR.length)); i++) {
+        result += "0";
+      }
+      console.log(result);
+      result += tempR;
+      console.log(result + " " + tempR);
+      var c = 0;
+    for(let i = result.length-1; i > 0; i--) {
+      if(result[i] == "0") continue
+      else{
+        c = i;
+        break;
+      }
+    }
+      return result.substring(0,c+1);
+      return result;
+    }else{
+    
+    var result = tempR.substring(0,tempR.length-sum) + ".";
+    result += tempR.substring(tempR.length-sum,tempR.length);
+    
+    
+    var c = 0;
+    for(let i = result.length-1; i > 0; i--) {
+      if(result[i] == "0") continue
+      else{
+        c = i;
+        break;
+      }
+    }
+      return result.substring(0,c+1);
+    }
+   // result = result.replace(/^0+/, '');
+    
+    
+  }else if(n.includes(".")) {
+    var num1 = "";
+    const myArray1 = n.split(".");
+    var count1 = myArray1[1].length;
+    var sum = count1;
+    for(let i = 0; i < n.length; i++) {
+     if(n[i] == ".") continue;
+     else num1 += n[i];
+    }
+    var tempR = (BigInt(num1)*BigInt(o)).toString();
+    
+    if(parseInt(tempR) == 0) return "0";
+    
+    if(tempR.substring(0,tempR.length-sum).length == 0) {
+      var result = "0.";
+      for(let i = 0; i < ((count1)- (tempR.length)); i++) {
+        result += "0";
+      }
+      result += tempR;
+      return result;
+    
+    }else{
+    
+    var result = tempR.substring(0,tempR.length-sum) + ".";
+    result += tempR.substring(tempR.length-sum,tempR.length);
+    console.log(result);
+    
+    var c = 0;
+    for(let i = result.length-1; i > 0; i--) {
+      if(result[i] == "0") continue
+      else{
+        c = i;
+        break;
+      }
+    }
+      
+      console.log(result + " " +c);
+   // result = result.replace(/^0+/, '');
+     var check = true;
+      for(let i = result.indexOf(".") +1; i < result.length; i++) {
+        if(result[i] == 0) continue
+        else {
+          check = false;
+          break;
+        }
+      }
+   
+      console.log(result.substring(0,c+1).indexOf(".") + " xx " + result.substring(0,c+1).length-1);
+      if(result.substring(0,c+1).indexOf(".") == result.substring(0,c+1).length-1)
+        return result.substring(0,result.substring(0,c+1).indexOf("."));
+      else
+        return result.substring(0,c+1);
+    }
+  }else if(o.includes(".")) {
+    var num1 = "";
+    const myArray1 = o.split(".");
+    var count1 = myArray1[1].length;
+    var sum = count1;
+    for(let i = 0; i < o.length; i++) {
+     if(o[i] == ".") continue;
+     else num1 += o[i];
+    }
+    var tempR = (BigInt(num1)*BigInt(n)).toString();
+    
+    if(parseInt(tempR) == 0) return "0";
+    
+    if(tempR.substring(0,tempR.length-sum).length == 0) {
+      var result = "0.";
+      for(let i = 0; i < ((count1)- (tempR.length)); i++) {
+        result += "0";
+      }
+      result += tempR;
+      return result;
+    
+    }else {
+    
+    var result = tempR.substring(0,tempR.length-sum) + ".";
+    result += tempR.substring(tempR.length-sum,tempR.length);
+
+    
+    var c = 0;
+    for(let i = result.length-1; i > 0; i--) {
+      if(result[i] == "0") continue
+      else{
+        c = i;
+        break;
+      }
+    }
+   // result = result.replace(/^0+/, '');
+    return result.substring(0,c+1);
+    }
+  }
+  
+  
+  else {
+    return (BigInt(n)*BigInt(o)).toString();
+  }
+
+}

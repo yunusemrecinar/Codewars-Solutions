@@ -1,0 +1,5 @@
+
+--Your code here
+SELECT *
+FROM users u
+WHERE u.age >= 18

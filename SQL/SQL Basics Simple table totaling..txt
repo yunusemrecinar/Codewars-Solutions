@@ -1,0 +1,8 @@
+-- Create your SELECT statement here
+select 
+  RANK() OVER (ORDER BY SUM(p.points) desc) rank, 
+  COALESCE(NULLIF(clan,''), '[no clan specified]') as clan, 
+  SUM(p.points) as total_points, 
+  COUNT(p.name) as total_people
+from people p
+GROUP BY clan

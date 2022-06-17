@@ -1,0 +1,3 @@
+INSERT into participants values('yunus',25,true);--Your code here
+
+SELECT * FROM participants;

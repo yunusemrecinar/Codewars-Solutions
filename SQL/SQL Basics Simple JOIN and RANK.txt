@@ -1,0 +1,7 @@
+-- Create your SELECT statement here
+select p.id, p.name, COUNT(s.sale) as sale_count,
+            RANK() OVER(
+                    ORDER BY Count(s.sale)) sale_rank
+from people p, sales s
+where p.id = s.people_id
+group by p.id, p.name

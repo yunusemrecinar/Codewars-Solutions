@@ -1,0 +1,7 @@
+-- Create your SELECT statement here
+select id, name 
+from departments d
+where exists
+  (select * from sales s
+  where d.id = s.department_id AND
+    price > 95.000)

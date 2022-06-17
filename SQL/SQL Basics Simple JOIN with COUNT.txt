@@ -1,0 +1,5 @@
+-- Create your SELECT statement here
+select p.id, p.name, count(t.id) as toy_count
+from people p, toys t
+where p.id = t.people_id
+group by p.id, p.name

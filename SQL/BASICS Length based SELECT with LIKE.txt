@@ -1,0 +1,4 @@
+-- Replace with your SQL Query
+select first_name, last_name
+from names
+Where firSt_name LIKE '%______%'

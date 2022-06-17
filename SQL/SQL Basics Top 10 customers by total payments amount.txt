@@ -1,0 +1,7 @@
+-- Replace with your query (in pure SQL)
+select c.customer_id, c.email, count(amount) as payments_count, CAST(sum(amount) AS FLOAT) as total_amount
+from customer c, payment p
+where c.customer_id = p.customer_id
+group by c.customer_id, c.email
+order by sum(amount) desc
+limit 10

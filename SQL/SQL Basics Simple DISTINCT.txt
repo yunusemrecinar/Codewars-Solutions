@@ -1,0 +1,3 @@
+-- Create your SELECT statement here
+select DISTINCT age
+from people 
